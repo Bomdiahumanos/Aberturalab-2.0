@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111827"><title>AberturaLab</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+</head>
+<body>
+<header><div class="brand">♟ <span>AberturaLab</span></div><div class="tag">TREINADOR DE ABERTURAS</div></header>
+<main>
+  <section class="hero"><p class="eyebrow">SEU LABORATÓRIO DE XADREZ</p><h1>Entenda suas posições.<br><em>Treine com propósito.</em></h1><p class="muted">A análise do tabuleiro é calculada no navegador do seu Android com Stockfish WebAssembly.</p></section>
+  <section class="panel">
+    <div class="section-title"><div><p class="eyebrow">01 / TABULEIRO</p><h2>Análise de posição</h2></div><span id="engineStatus" class="status">Engine não iniciada</span></div>
+    <div class="board-wrap"><div id="board" aria-label="Tabuleiro de xadrez"></div></div>
+    <div class="board-actions"><button id="undoBtn" class="secondary">↶ Desfazer</button><button id="resetBtn" class="secondary">Reiniciar</button><button id="flipBtn" class="secondary">Virar tabuleiro</button></div>
+    <div class="move-row"><label for="fenInput">Posição FEN</label><div class="input-row"><input id="fenInput" spellcheck="false" value="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"><button id="loadFenBtn">Carregar</button></div></div>
+    <div class="analysis-row"><label for="depth">Profundidade de análise <strong id="depthLabel">10</strong></label><input id="depth" type="range" min="6" max="16" value="10"><button id="analyzeBtn" class="primary">Analisar posição</button></div>
+    <div id="analysisResult" class="result"><span class="muted">Carregue a engine e toque em “Analisar posição”.</span></div>
+  </section>
+  <section class="panel">
+    <div class="section-title"><div><p class="eyebrow">02 / SUAS PARTIDAS</p><h2>Importar PGN</h2></div></div>
+    <p class="muted">Exporte suas partidas do Chess.com em PGN e importe aqui. A análise local pode então ser aplicada às posições.</p>
+    <label class="file-picker">Escolher arquivo PGN<input type="file" id="pgnFile" accept=".pgn,text/plain"></label>
+    <div id="pgnSummary" class="result"><span class="muted">Nenhum arquivo carregado.</span></div>
+    <label for="pgnText">Ou cole o PGN</label><textarea id="pgnText" rows="5" placeholder="Cole aqui o texto PGN da partida..."></textarea>
+    <button id="loadPgnBtn" class="primary">Carregar partida</button>
+    <div id="gameMoves" class="move-list"></div>
+  </section>
+  <section class="panel">
+    <div class="section-title"><div><p class="eyebrow">03 / REPERTÓRIO</p><h2>Diagnóstico de aberturas</h2></div></div>
+    <p class="muted">Esta primeira base identifica o que estiver marcado no PGN e mostra as jogadas iniciais. A classificação ECO ampliada, estatísticas automáticas por abertura/cor e os exercícios personalizados entram nas próximas etapas.</p>
+    <div id="openingInfo" class="result"><span class="muted">Importe uma partida para ver as informações disponíveis.</span></div>
+  </section>
+  <footer>As avaliações de Stockfish são processadas neste dispositivo. O carregamento inicial dos arquivos e das bibliotecas pode exigir internet.</footer>
+</main>
+<script src="app.js"></script>
+</body></html>
